@@ -1,0 +1,4 @@
+2016/10/06 : RotaAnts rule table      git123hub
+2016/10/05 : RotaAnts                 PHPBB12345
+2015/08/07 : RotaRule                 A for awesome
+2015/07/02 : Attract and Repel        SeanBP
