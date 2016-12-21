@@ -1,0 +1,257 @@
+@RULE myconstr2-20161221
+0 empty
+1 tail
+2,...6 head
+7,...11 reflecting head
+12 inter-state 2 (operation 1)
+13 inter-state 3 (operation 2)
+14 inter-state 4 (reserved)
+15 inter-state 5 (one time reflect)
+16 inter-state 6 (direct reflect)
+17 construction arm
+18 construction arm 2
+19 reflector/kill
+20 splitter
+21 head transform
+22 duplicate arm
+23 push arm
+24 transfer
+25 pull arm
+26 make 18
+27 push 18
+28 pull 18
+29,30 reading state
+
+codons:
+(side)
+  2/2 push
+  2/3 pull
+  2/4 duplicate arm/destroy
+  2/5 reserved
+  2/6 arm->reflector
+  3/2 flip
+  3/3 read
+  3/4 create state 18/destroy
+  3/5 reserved
+  3/6 reserved
+  4/x reserved
+  5/x reflect x
+  6..6 reflect ..
+
+(17 front)
+  2 push
+  3 pull
+  4 make splitter
+  5 delete arm
+  6 make reflector
+
+(18 front)
+  2 push
+  3 pull
+  4 reserved
+  5 delete state 18
+  6 make head transform
+
+@TABLE
+n_states:31
+neighborhood:Moore
+symmetries:rotate4reflect
+
+var xa = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30}
+var xb = xa
+var xc = xa
+var xd = xa
+var xe = xa
+var xf = xa
+var xg = xa
+var xh = xa
+var r  = {15,16,19}
+var sa = {2,3,4,5,6}
+var sb = sa
+var tt = {7,8,9,11}
+var ta = {10,tt}
+var todead = {1,23,24,25,27,28}
+var nt1 = {0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,30}
+var nt2 = nt1
+var nt3 = nt1
+var nt4 = nt1
+var nc1 = {1,nt1}
+var nc2 = nc1
+var dt1 = {0,1}
+var dt2 = dt1
+var block = {12,13,14,15,16,17,18,19,20,21}
+var bloz1 = {0,block}
+var bloz2 = bloz1
+var k = {12,13,14}
+
+ 0,16,nt1,6,nt2,xe,xf,xg,xh,0
+ 0,16,xa,11,1,xc,xd,xe,xf,0
+
+ 0, r,xa,ta,1,xc,xd,xe,xf,ta
+ 0,21,xa, 7,1,xc,xd,xe,xf, 8
+ 0,21,xa, 8,1,xc,xd,xe,xf, 9
+ 0,21,xa, 9,1,xc,xd,xe,xf,10
+ 0,21,xa,10,1,xc,xd,xe,xf,11
+ 0,21,xa,11,1,xc,xd,xe,xf, 7
+ 0,ta,1,xc,xd,20,xf,xg,xh,ta
+
+ 0, 7,1,xc,xd,xe,xf,xg,xh,2
+ 0, 8,1,xc,xd,xe,xf,xg,xh,3
+ 0, 9,1,xc,xd,xe,xf,xg,xh,4
+ 0,10,1,xc,xd,xe,xf,xg,xh,5
+ 0,11,1,xc,xd,xe,xf,xg,xh,6
+
+ 0,r,nt1,sa,nt2,r,nt3,0,nt4,sa
+
+ 0,r,nt1,2,nt2,xa,nt3,2,nt4, 7
+ 0,r,nt1,3,nt2,xa,nt3,3,nt4, 8
+ 0,r,nt1,4,nt2,xa,nt3,4,nt4, 9
+ 0,r,nt1,5,nt2,xa,nt3,5,nt4,10
+ 0,r,nt1,6,nt2,xa,nt3,6,nt4,11
+ 0,r,nt1,2,nt2,xa,xb,dt1,xd, 7
+ 0,r,nt1,3,nt2,xa,xb,dt1,xd, 8
+ 0,r,nt1,4,nt2,xa,xb,dt1,xd, 9
+ 0,r,nt1,5,nt2,xa,xb,dt1,xd,10
+ 0,r,nt1,6,nt2,xa,xb,dt1,xd,11
+ 0,r,nt1,sa,nt2,xa,nt3,sb,nt4, 1
+
+ 0,21,nt1,sa,nt2,20,nt3,dt1,nt4,6
+
+ 0,21,nt1,2,nt2,21,nt3,0,nt4,3
+ 0,21,nt1,3,nt2,21,nt3,0,nt4,4
+ 0,21,nt1,4,nt2,21,nt3,0,nt4,5
+ 0,21,nt1,5,nt2,21,nt3,0,nt4,6
+ 0,21,nt1,6,nt2,21,nt3,0,nt4,2
+
+ 0,21,nt1,2,nt2,xa,nt3,2,nt4, 8
+ 0,21,nt1,3,nt2,xa,nt3,3,nt4, 9
+ 0,21,nt1,4,nt2,xa,nt3,4,nt4,10
+ 0,21,nt1,5,nt2,xa,nt3,5,nt4,11
+ 0,21,nt1,6,nt2,xa,nt3,6,nt4, 7
+ 0,21,nt1,2,nt2,xa,xb,dt1,xd, 8
+ 0,21,nt1,3,nt2,xa,xb,dt1,xd, 9
+ 0,21,nt1,4,nt2,xa,xb,dt1,xd,10
+ 0,21,nt1,5,nt2,xa,xb,dt1,xd,11
+ 0,21,nt1,6,nt2,xa,xb,dt1,xd, 7
+ 0,21,nt1,sa,nt2,xa,nt3,sb,nt4, 1
+
+ 0,20,nt1,dt1,nt2,2,nt3,dt2,nt4, 7
+ 0,20,nt1,dt1,nt2,3,nt3,dt2,nt4, 8
+ 0,20,nt1,dt1,nt2,4,nt3,dt2,nt4, 9
+ 0,20,nt1,dt1,nt2,5,nt3,dt2,nt4,10
+ 0,20,nt1,dt1,nt2,6,nt3,dt2,nt4,11
+
+0,1,29,xa,bloz1,17,bloz2,xb,xc,22
+0,1,29,xa,bloz1,18,bloz2,xb,xc,26
+0,1,29,xa,bloz1,xd,bloz2,xb,xc,30
+
+0,17,xa,30,xb,22,xc,xd,xe,7
+0,17,xa,30,xb,26,xc,xd,xe,8
+0,17,xa,30,xb,30,xc,xd,xe,11
+
+0,12,0,4,nt1,xa,xb,xc,xd,22
+0,xa,xb,xc,xd,xe,xf,22,1,23
+22,xa,xb,xc,xd,xe,xf,xg,xh,1
+0,xa,xb,xc,xd,xe,nt1,23,nt2,17
+block,xa,xb,xc,xd,xe,nt1,23,nt2,0
+1,25,xb,xc,xd,xe,xf,xg,xh,17
+
+0,13,0,4,nt1,xa,xb,xc,xd,26
+0,xa,xb,xc,xd,xe,xf,26,1,27
+26,xa,xb,xc,xd,xe,xf,xg,xh,1
+0,xa,xb,xc,xd,xe,nt1,27,nt2,18
+block,xa,xb,xc,xd,xe,nt1,27,nt2,0
+1,28,xb,xc,xd,xe,xf,xg,xh,18
+
+0,13,0,2,nt1,xa,xb,xc,xd,24
+
+0,3,13,xa,xb,xc,xd,xe,xf,29
+
+ 0,sa,k ,xc,xd,xe,xf ,xg,xh , 0
+ 0,xa,xb,xc,xd,xe,nt1,sa,nt2,sa
+sa,xa,xb,xc,xd,xe,xf ,xg,xh , 1
+ta,xa,xb,xc,xd,xe,xf ,xg,xh , 1
+
+29,xa,xb,xc,xd,xe,xf,xg,xh,30
+30,xa,xb,xc,xd,xe,xf,xg,xh,1
+
+todead,xa,xb,xc,xd,xe,xf,xg,xh,0
+
+16,xa, 6,xc,xd,xe,xf,xg,xh,17
+16,xa,11,xc,xd,xe,xf,xg,xh,17
+
+17, 2, 1,xa,xb,xc,xd ,xe,xf ,12
+17, 3, 1,xa,xb,xc,xd ,xe,xf ,13
+17, 4, 1,xa,xb,xc,xd ,xe,xf ,14
+17, 5, 1,xa,xb,xc,xd ,xe,xf ,15
+17, 6, 1,xa,xb,xc,xd ,xe,xf ,16
+
+# front codons for 17
+17,xa,xb,xc,xd,xe,nt1,2,nt2,23
+17,xa,xb,xc,xd,xe,nt1,3,nt2,25
+17,xa,xb,xc,xd,xe,nt1,4,nt2,20
+17,xa,xb,xc,xd,xe,nt1,5,nt2,0
+17,xa,xb,xc,xd,xe,nt1,6,nt2,19
+
+# front codons for 18
+18,xa,xb,xc,xd,xe,nt1,2,nt2,27
+18,xa,xb,xc,xd,xe,nt1,3,nt2,28
+18,xa,xb,xc,xd,xe,nt1,5,nt2,0
+18,xa,xb,xc,xd,xe,nt1,6,nt2,21
+
+# side codon interstates 2 (operation 1)
+0,12,2,0,xd,xe,xf,xg,xh,17
+12,2,1,xc,xd,xe,xf,xg,xh,0
+0,12,3,1,xd,xe,xf,xg,xh,17
+12,3,1,xc,xd,xe,xf,xg,xh,0
+12,22,1,xc,xd,xe,xf,xg,xh,17
+12,6,1,xc,xd,xe,xf,xg,xh,19
+
+# side codon interstates 3 (operation 2)
+0,24,1,xc,xd,xe,xf,xg,xh,17
+13,24,1,xc,xd,xe,xf,xg,xh,0
+13,3,1,xc,xd,xe,xf,xg,xh,17
+13,26,1,xc,xd,xe,xf,xg,xh,17
+
+# side codon interstates 5 (one-time reflector)
+15,tt,1,xc,xd,xe,xf,xg,xh,17
+
+@COLORS
+
+0 0 0 0
+1 100 114 128
+
+2 255 0 0
+3 255 128 0
+4 224 255 0
+5 64 224 0
+6 0 255 255
+
+7 255 0 0
+8 255 128 0
+9 224 255 0
+10 64 224 0
+11 0 255 255
+
+12 160 0 0
+13 160 80 0
+14 140 160 0
+15 40 140 0
+16 0 160 160
+
+17 150 170 190
+18 190 160 175
+19 190 170 150
+20 150 190 110
+21 165 140 190
+
+22 150 170 190
+23 150 170 190
+24 150 170 190
+25 150 170 190
+26 190 160 175
+27 190 160 175
+28 190 160 175
+
+29 140 190 190
+30 140 190 190
